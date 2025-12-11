@@ -1,11 +1,11 @@
 import concurrent.futures
 import itertools
-import multiprocessing
 
 
 def check_value(value):
     value_string = str(value)
-    for i in range(1, len(value_string)):
+    l = (len(value_string) // 2) + 1
+    for i in range(1, l):
         batched = list(map(lambda x: "".join(x), itertools.batched(value_string, i)))
         if all(x == batched[0] for x in batched):
             return value
@@ -45,4 +45,5 @@ if __name__ == '__main__':
     input = "11-22,95-115,998-1012,1188511880-1188511890,222220-222224,1698522-1698528,446443-446449,38593856-38593862,565653-565659,824824821-824824827,2121212118-2121212124"
 
     result = process(readfile("input.txt"))
+    # 27469417404
     print(result)
